@@ -54,13 +54,9 @@ public class MainActivity extends Activity {
         flashCardList.add("Best datastructure to implement Stack\r\n" +
                 "** Linked List **");
 
-        //btnLeft.Click += new EventHandler(this.btnLeft_Click);
-        //btnRight.Click += new EventHandler(this.btnRight_Click);
         flashCardText.setText(flashCardList.get(currentPosition));
 
         updateCount();
-
-        //enableDisableKeys();
     }
 
     @Override
