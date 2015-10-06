@@ -4,10 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
 public class MainActivity extends Activity {
+
+    private TextView flashCardText;
+    private float x1, x2;
+    private static final int MIN_DISTANCE = 150;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +24,33 @@ public class MainActivity extends Activity {
         Firebase.setAndroidContext(this);
 
         setContentView(R.layout.activity_main);
+
+        flashCardText = (TextView) findViewById(R.id.flashCardText);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                float deltaX = x2 - x1;
+
+                if (Math.abs(deltaX) > MIN_DISTANCE) {
+                    // Left to Right swipe action
+                    if (x2 > x1) {
+                        Toast.makeText(this, "Left to Right swipe [Next]", Toast.LENGTH_SHORT).show();
+                    }
+                    // Right to left swipe action
+                    else {
+                        Toast.makeText(this, "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
+                    }
+                }
+                break;
+        }
+        return super.onTouchEvent(event);
     }
 
     @Override
