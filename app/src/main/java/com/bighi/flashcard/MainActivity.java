@@ -16,6 +16,9 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     private TextView flashCardText;
+    private TextView currentSlideNo;
+    private TextView totalSlideCount;
+
     private float x1, x2;
     private static final int MIN_DISTANCE = 150;
     private ArrayList<String> flashCardList = new ArrayList<>();
@@ -30,6 +33,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         flashCardText = (TextView) findViewById(R.id.flashCardText);
+        currentSlideNo = (TextView) findViewById(R.id.currentSlideNo);
+        totalSlideCount = (TextView) findViewById(R.id.totalSlideCount);
 
         initFlashCards();
     }
@@ -53,7 +58,7 @@ public class MainActivity extends Activity {
         //btnRight.Click += new EventHandler(this.btnRight_Click);
         flashCardText.setText(flashCardList.get(currentPosition));
 
-        //updateCount();
+        updateCount();
 
         //enableDisableKeys();
     }
@@ -71,12 +76,12 @@ public class MainActivity extends Activity {
                 if (Math.abs(deltaX) > MIN_DISTANCE) {
                     // Left to Right swipe action
                     if (x2 > x1) {
-                        Toast.makeText(this, "Left to Right swipe [Next]", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Left to Right swipe [Previous]", Toast.LENGTH_SHORT).show();
                         moveLeft();
                     }
                     // Right to left swipe action
                     else {
-                        Toast.makeText(this, "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
+                        Toast.makeText(this, "Right to Left swipe [Next]", Toast.LENGTH_SHORT).show ();
                         moveRight();
                     }
                 }
@@ -85,16 +90,21 @@ public class MainActivity extends Activity {
         return super.onTouchEvent(event);
     }
 
+    private void updateCount() {
+        totalSlideCount.setText(String.valueOf(flashCardList.size()));
+        currentSlideNo.setText(String.valueOf(currentPosition + 1));
+    }
+
     private void moveRight() {
         currentPosition = getNextIndexForRightKey(currentPosition);
         flashCardText.setText(flashCardList.get(currentPosition));
-        //updateCount();
+        updateCount();
     }
 
     private void moveLeft() {
         currentPosition = getNextIndexForLeftKey(currentPosition);
         flashCardText.setText(flashCardList.get(currentPosition));
-        //updateCount();
+        updateCount();
     }
 
     private int getNextIndexForLeftKey(int currPos) {
