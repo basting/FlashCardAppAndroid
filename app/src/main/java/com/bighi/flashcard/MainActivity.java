@@ -11,11 +11,15 @@ import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
 
     private TextView flashCardText;
     private float x1, x2;
     private static final int MIN_DISTANCE = 150;
+    private ArrayList<String> flashCardList = new ArrayList<>();
+    private int currentPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,32 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         flashCardText = (TextView) findViewById(R.id.flashCardText);
+
+        initFlashCards();
+    }
+
+    private void initFlashCards()
+    {
+        flashCardList.add("StringBuffer is thread-safe\r\n" +
+                "StringBuilder is not thread-safe");
+
+        flashCardList.add("HashTable is thread-safe\r\n" +
+                "HashMap is not thread-safe");
+
+        flashCardList.add("Two ways to create threads\r\n" +
+                "* Implement Runnable interface\r\n" +
+                "* Extend Thread class");
+
+        flashCardList.add("Best datastructure to implement Stack\r\n" +
+                "** Linked List **");
+
+        //btnLeft.Click += new EventHandler(this.btnLeft_Click);
+        //btnRight.Click += new EventHandler(this.btnRight_Click);
+        flashCardText.setText(flashCardList.get(currentPosition));
+
+        //updateCount();
+
+        //enableDisableKeys();
     }
 
     @Override
@@ -42,15 +72,43 @@ public class MainActivity extends Activity {
                     // Left to Right swipe action
                     if (x2 > x1) {
                         Toast.makeText(this, "Left to Right swipe [Next]", Toast.LENGTH_SHORT).show();
+                        moveLeft();
                     }
                     // Right to left swipe action
                     else {
                         Toast.makeText(this, "Right to Left swipe [Previous]", Toast.LENGTH_SHORT).show ();
+                        moveRight();
                     }
                 }
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    private void moveRight() {
+        currentPosition = getNextIndexForRightKey(currentPosition);
+        flashCardText.setText(flashCardList.get(currentPosition));
+        //updateCount();
+    }
+
+    private void moveLeft() {
+        currentPosition = getNextIndexForLeftKey(currentPosition);
+        flashCardText.setText(flashCardList.get(currentPosition));
+        //updateCount();
+    }
+
+    private int getNextIndexForLeftKey(int currPos) {
+        if (currPos <= 0) {
+            return flashCardList.size() - 1;
+        }
+        return currPos - 1;
+    }
+
+    private int getNextIndexForRightKey(int currPos) {
+        if (currPos >= flashCardList.size() - 1) {
+            return 0;
+        }
+        return currPos + 1;
     }
 
     @Override
