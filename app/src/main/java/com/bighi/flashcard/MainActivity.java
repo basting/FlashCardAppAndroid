@@ -23,18 +23,24 @@ public class MainActivity extends Activity {
     private static final int MIN_DISTANCE = 150;
     private ArrayList<String> flashCardList = new ArrayList<>();
     private int currentPosition = 0;
+    Firebase myFirebaseRef;
+
+    private static final String FIREBASE_URL = "https://flashcardsbase.firebaseio.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Firebase.setAndroidContext(this);
+        myFirebaseRef = new Firebase(FIREBASE_URL);
 
         setContentView(R.layout.activity_main);
 
         flashCardText = (TextView) findViewById(R.id.flashCardText);
         currentSlideNo = (TextView) findViewById(R.id.currentSlideNo);
         totalSlideCount = (TextView) findViewById(R.id.totalSlideCount);
+
+
 
         initFlashCards();
     }
