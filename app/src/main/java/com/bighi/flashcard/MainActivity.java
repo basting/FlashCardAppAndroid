@@ -40,8 +40,6 @@ public class MainActivity extends Activity {
         currentSlideNo = (TextView) findViewById(R.id.currentSlideNo);
         totalSlideCount = (TextView) findViewById(R.id.totalSlideCount);
 
-
-
         initFlashCards();
     }
 
@@ -57,8 +55,14 @@ public class MainActivity extends Activity {
                 "* Implement Runnable interface\r\n" +
                 "* Extend Thread class");
 
-        flashCardList.add("Best datastructure to implement Stack\r\n" +
+        flashCardList.add("Best data structure to implement Stack\r\n" +
                 "** Linked List **");
+
+        flashCardList.add("Examples of stable sorting\r\n" +
+                "** Merge sort **");
+
+        flashCardList.add("Examples of unstable sorting\r\n" +
+                "** Quick sort **");
 
         flashCardText.setText(flashCardList.get(currentPosition));
 
