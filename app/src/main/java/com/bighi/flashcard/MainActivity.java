@@ -13,8 +13,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     private TextView flashCardText;
-    private TextView currentSlideNo;
-    private TextView totalSlideCount;
+    private TextView slideNo;
 
     private float x1, x2;
     private static final int MIN_DISTANCE = 150;
@@ -34,8 +33,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         flashCardText = (TextView) findViewById(R.id.flashCardText);
-        currentSlideNo = (TextView) findViewById(R.id.currentSlideNo);
-        totalSlideCount = (TextView) findViewById(R.id.totalSlideCount);
+        slideNo = (TextView) findViewById(R.id.slideNo);
 
         initFlashCards();
     }
@@ -94,8 +92,7 @@ public class MainActivity extends Activity {
     }
 
     private void updateCount() {
-        totalSlideCount.setText(String.valueOf(flashCardList.size()));
-        currentSlideNo.setText(String.valueOf(currentPosition + 1));
+        slideNo.setText(String.valueOf(flashCardList.size()) + " of " + String.valueOf(currentPosition + 1));
     }
 
     private void moveRight() {
