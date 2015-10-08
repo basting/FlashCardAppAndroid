@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
     private int currentPosition = 0;
     //Firebase myFirebaseRef;
 
-    private static final String FIREBASE_URL = "https://flashcardsbase.firebaseio.com/";
+   //private static final String FIREBASE_URL = "https://flashcardsbase.firebaseio.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
