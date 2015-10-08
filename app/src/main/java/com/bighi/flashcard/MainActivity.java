@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 
@@ -23,7 +20,7 @@ public class MainActivity extends Activity {
     private static final int MIN_DISTANCE = 150;
     private ArrayList<String> flashCardList = new ArrayList<>();
     private int currentPosition = 0;
-    Firebase myFirebaseRef;
+    //Firebase myFirebaseRef;
 
     private static final String FIREBASE_URL = "https://flashcardsbase.firebaseio.com/";
 
@@ -31,8 +28,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Firebase.setAndroidContext(this);
-        myFirebaseRef = new Firebase(FIREBASE_URL);
+        //Firebase.setAndroidContext(this);
+        //myFirebaseRef = new Firebase(FIREBASE_URL);
 
         setContentView(R.layout.activity_main);
 
