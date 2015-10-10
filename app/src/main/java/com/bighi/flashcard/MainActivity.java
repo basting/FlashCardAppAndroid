@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ public class MainActivity extends Activity {
 
     private float x1, x2;
     private static final int MIN_DISTANCE = 150;
-    private ArrayList<String> flashCardList = new ArrayList<>();
+    private final ArrayList<String> flashCardList = new ArrayList<>();
     private int currentPosition = 0;
 
     @Override
