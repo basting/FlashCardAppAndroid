@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
     }
 
     private void updateCount() {
-        slideNo.setText(String.valueOf(flashCardList.size()) + " of " + String.valueOf(currentPosition + 1));
+        slideNo.setText(String.format("%d of %d", currentPosition + 1, flashCardList.size()));
     }
 
     private void moveRight() {
