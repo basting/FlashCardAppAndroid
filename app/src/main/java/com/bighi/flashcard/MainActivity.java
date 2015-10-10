@@ -71,12 +71,12 @@ public class MainActivity extends Activity {
                 if (Math.abs(deltaX) > MIN_DISTANCE) {
                     // Left to Right swipe action
                     if (x2 > x1) {
-                        Toast.makeText(this, "Left to Right swipe [Previous]", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "Left to Right swipe [Previous]", Toast.LENGTH_SHORT).show();
                         moveLeft();
                     }
                     // Right to left swipe action
                     else {
-                        Toast.makeText(this, "Right to Left swipe [Next]", Toast.LENGTH_SHORT).show ();
+                        //Toast.makeText(this, "Right to Left swipe [Next]", Toast.LENGTH_SHORT).show ();
                         moveRight();
                     }
                 }
