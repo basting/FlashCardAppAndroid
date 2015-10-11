@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 
     private void getNextCard() {
         if(AppUtil.getShuffleIndicator(getBaseContext())) {
-            currentPosition = getNextRandomIndexForRightKey(currentPosition);
+            currentPosition = getNextRandomIndex(currentPosition);
         }else{
             currentPosition = getNextIndexForRightKey(currentPosition);
         }
@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
 
     private void getPreviousCard() {
         if(AppUtil.getShuffleIndicator(getBaseContext())) {
-            currentPosition = getNextRandomIndexForLeftKey(currentPosition);
+            currentPosition = getNextRandomIndex(currentPosition);
         }else {
             currentPosition = getNextIndexForLeftKey(currentPosition);
         }
@@ -121,15 +121,6 @@ public class MainActivity extends Activity {
         return currPos - 1;
     }
 
-    private int getNextRandomIndexForLeftKey(int currPos) {
-        int min = 0;
-        int max = currPos;
-        if (currPos <= min) {
-            max = flashCardList.size() - 1;
-        }
-        return random.nextInt(max - min + 1) + min;
-    }
-
     private int getNextIndexForRightKey(int currPos) {
         if (currPos >= flashCardList.size() - 1) {
             return 0;
@@ -137,13 +128,14 @@ public class MainActivity extends Activity {
         return currPos + 1;
     }
 
-    private int getNextRandomIndexForRightKey(int currPos) {
-        int min = currPos;
+    private int getNextRandomIndex(int currPos) {
+        int randInd;
+        int min = 0;
         int max = flashCardList.size() - 1;
-        if (currPos >= max) {
-            min = 0;
-        }
-        return random.nextInt(max - min + 1) + min;
+        do {
+            randInd = random.nextInt(max - min + 1) + min;
+        } while(randInd == currPos);
+        return randInd;
     }
 
     @Override
