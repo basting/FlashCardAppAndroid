@@ -5,7 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 /**
- * Created by BastinGomez on 2015-10-11.
+ * @author Bastin Gomez
+ * @since 11-Oct-15
  */
 public class AppUtil {
     public static boolean getShuffleIndicator(Context context){
