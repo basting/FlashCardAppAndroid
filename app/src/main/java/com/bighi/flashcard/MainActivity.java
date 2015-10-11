@@ -72,12 +72,12 @@ public class MainActivity extends Activity {
                     // Left to Right swipe action
                     if (x2 > x1) {
                         //Toast.makeText(this, "Left to Right swipe [Previous]", Toast.LENGTH_SHORT).show();
-                        moveLeft();
+                        getPreviousCard();
                     }
                     // Right to left swipe action
                     else {
                         //Toast.makeText(this, "Right to Left swipe [Next]", Toast.LENGTH_SHORT).show ();
-                        moveRight();
+                        getNextCard();
                     }
                 }
                 break;
@@ -89,13 +89,13 @@ public class MainActivity extends Activity {
         slideNo.setText(String.format("%d of %d", currentPosition + 1, flashCardList.size()));
     }
 
-    private void moveRight() {
+    private void getNextCard() {
         currentPosition = getNextIndexForRightKey(currentPosition);
         flashCardText.setText(flashCardList.get(currentPosition));
         updateCount();
     }
 
-    private void moveLeft() {
+    private void getPreviousCard() {
         currentPosition = getNextIndexForLeftKey(currentPosition);
         flashCardText.setText(flashCardList.get(currentPosition));
         updateCount();
