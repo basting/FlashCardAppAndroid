@@ -8,7 +8,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
+import com.bighi.flashcard.util.AppUtil;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends Activity {
 
@@ -19,6 +22,7 @@ public class MainActivity extends Activity {
     private static final int MIN_DISTANCE = 150;
     private final ArrayList<String> flashCardList = new ArrayList<>();
     private int currentPosition = 0;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,13 +94,22 @@ public class MainActivity extends Activity {
     }
 
     private void getNextCard() {
-        currentPosition = getNextIndexForRightKey(currentPosition);
+        if(AppUtil.getShuffleIndicator(getBaseContext())) {
+            currentPosition = getNextRandomIndexForRightKey(currentPosition);
+        }else{
+            currentPosition = getNextIndexForRightKey(currentPosition);
+        }
         flashCardText.setText(flashCardList.get(currentPosition));
         updateCount();
     }
 
     private void getPreviousCard() {
-        currentPosition = getNextIndexForLeftKey(currentPosition);
+        if(AppUtil.getShuffleIndicator(getBaseContext())) {
+            currentPosition = getNextRandomIndexForLeftKey(currentPosition);
+        }else {
+            currentPosition = getNextIndexForLeftKey(currentPosition);
+        }
+
         flashCardText.setText(flashCardList.get(currentPosition));
         updateCount();
     }
@@ -108,11 +121,29 @@ public class MainActivity extends Activity {
         return currPos - 1;
     }
 
+    private int getNextRandomIndexForLeftKey(int currPos) {
+        int min = 0;
+        int max = currPos;
+        if (currPos <= min) {
+            max = flashCardList.size() - 1;
+        }
+        return random.nextInt(max - min + 1) + min;
+    }
+
     private int getNextIndexForRightKey(int currPos) {
         if (currPos >= flashCardList.size() - 1) {
             return 0;
         }
         return currPos + 1;
+    }
+
+    private int getNextRandomIndexForRightKey(int currPos) {
+        int min = currPos;
+        int max = flashCardList.size() - 1;
+        if (currPos >= max) {
+            min = 0;
+        }
+        return random.nextInt(max - min + 1) + min;
     }
 
     @Override
