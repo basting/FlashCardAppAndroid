@@ -14,7 +14,9 @@ public class SettingsActivity extends PreferenceActivity {
                 new SettingsFragment()).commit();
 
         ActionBar actionBar = getActionBar();
-        actionBar.setHomeButtonEnabled(true);
+        if(actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+        }
     }
 
     @Override
