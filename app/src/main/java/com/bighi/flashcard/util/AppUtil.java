@@ -11,7 +11,6 @@ import android.preference.PreferenceManager;
 public class AppUtil {
     public static boolean getShuffleIndicator(Context context){
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean shuffleInd = SP.getBoolean("opt_shuffle_cards",false);
-        return shuffleInd;
+        return SP.getBoolean("opt_shuffle_cards",false);
     }
 }
