@@ -15,7 +15,8 @@ public class SettingsActivity extends PreferenceActivity {
 
         ActionBar actionBar = getActionBar();
         if(actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
+           // actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
