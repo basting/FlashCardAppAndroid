@@ -9,5 +9,13 @@
             android:summary="Tick to shuffle the cards"
             android:defaultValue="false"
             />
+
+        <CheckBoxPreference
+            android:key="opt_auto_navigate"
+            android:title="Shuffle"
+            android:summary="Tick to shuffle the cards"
+            android:defaultValue="false"
+            />
+
         </PreferenceCategory>
 </PreferenceScreen>
