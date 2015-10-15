@@ -13,4 +13,9 @@ public class AppUtil {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(context);
         return SP.getBoolean("opt_shuffle_cards",false);
     }
+
+    public static boolean getSlideShowIndicator(Context context){
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(context);
+        return SP.getBoolean("opt_slide_show",false);
+    }
 }
