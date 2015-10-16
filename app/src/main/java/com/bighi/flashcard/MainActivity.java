@@ -2,6 +2,7 @@ package com.bighi.flashcard;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +23,7 @@ public class MainActivity extends Activity {
     private static final int MIN_DISTANCE = 150;
     private final ArrayList<String> flashCardList = new ArrayList<>();
     private int currentPosition = 0;
-    Random random = new Random();
+    private Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,7 @@ public class MainActivity extends Activity {
         initFlashCards();
     }
 
-    private void initFlashCards()
-    {
+    private void initFlashCards() {
         flashCardList.add("StringBuffer is thread-safe\r\n" +
                 "StringBuilder is not thread-safe");
 

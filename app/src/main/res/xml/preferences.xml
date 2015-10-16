@@ -10,13 +10,5 @@
             android:defaultValue="false"
             />
 
-        <CheckBoxPreference
-            android:key="opt_slide_show"
-            android:title="Slide Show"
-            android:summary="Tick to auto-navigate the slides"
-            android:defaultValue="false"
-            />
-
-
         </PreferenceCategory>
 </PreferenceScreen>

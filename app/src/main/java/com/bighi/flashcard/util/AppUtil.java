@@ -10,12 +10,7 @@ import android.preference.PreferenceManager;
  */
 public class AppUtil {
     public static boolean getShuffleIndicator(Context context){
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(context);
-        return SP.getBoolean("opt_shuffle_cards",false);
-    }
-
-    public static boolean getSlideShowIndicator(Context context){
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(context);
-        return SP.getBoolean("opt_slide_show",false);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        return sp.getBoolean("opt_shuffle_cards",false);
     }
 }
