@@ -159,8 +159,8 @@ public class MainActivity extends Activity {
             intent.setClass(MainActivity.this, SettingsActivity.class);
             startActivityForResult(intent, 0);
             return true;
-        } else if (id == R.id.action_slideshow) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        } else if (id == R.id.action_slideshow) { // Open for slide show
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, // Give an option for exiting slide show
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
