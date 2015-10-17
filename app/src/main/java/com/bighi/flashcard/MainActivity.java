@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.bighi.flashcard.util.AppUtil;
@@ -158,6 +159,9 @@ public class MainActivity extends Activity {
             intent.setClass(MainActivity.this, SettingsActivity.class);
             startActivityForResult(intent, 0);
             return true;
+        } else if (id == R.id.action_slideshow) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
         return super.onOptionsItemSelected(item);
